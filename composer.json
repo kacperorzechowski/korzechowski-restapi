@@ -1,0 +1,19 @@
+{
+    "name": "korzechowski/restapi",
+    "description": "A REST Api package",
+    "authors": [
+        {
+            "name": "Kacper Orzechowski",
+            "email": "kacper.orzechowski96@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {},
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Korzechowski\\RestApi\\RestApiServiceProvider"
+            ]
+        }
+    }
+}
