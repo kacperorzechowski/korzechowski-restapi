@@ -8,5 +8,13 @@ class Item extends Model
 {
     public $timestamps = false;
 
-    protected $fillable = ['id', 'name', 'amount'];
+    protected $searchable = ["id", "amount"];
+    protected $fillable = ["id", "name", "amount"];
+
+    public static function getSearchable()
+    {
+        $item = new self;
+
+        return $item->searchable;
+    }
 }

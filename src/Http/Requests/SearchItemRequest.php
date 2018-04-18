@@ -4,6 +4,7 @@ namespace Korzechowski\RestApi\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
+use Korzechowski\RestApi\Data\Item;
 
 class SearchItemRequest extends FormRequest
 {
@@ -26,12 +27,12 @@ class SearchItemRequest extends FormRequest
     {
         return [
             "columnName" => [
-               "required",
-                Rule::in(["amount", "name"])
+                "required",
+                Rule::in(Item::getSearchable())
             ],
             "operator" => [
                 "required",
-                Rule::in([">", "<", ">=", "<="])
+                Rule::in([">", "<", "=", ">=", "<=", "!="])
             ],
             "value" => "required"
         ];

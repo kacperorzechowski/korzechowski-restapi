@@ -3,6 +3,7 @@
 namespace Korzechowski\RestApi\Data\Repositories;
 
 use Illuminate\Database\Eloquent\Model;
+use Korzechowski\RestApi\Data\constants\HTTP_STATUS_CODES;
 use Korzechowski\RestApi\Data\Interfaces\RepositoryInterface;
 
 class ItemRepository implements RepositoryInterface
@@ -29,7 +30,7 @@ class ItemRepository implements RepositoryInterface
 
         return response()->json([
             "data" => $item
-        ]);
+        ], HTTP_STATUS_CODES::HTTP_CREATED);
     }
 
     public function update(array $attributes, $id)
@@ -40,14 +41,14 @@ class ItemRepository implements RepositoryInterface
 
         return response()->json([
             "data" => $item
-        ]);
+        ], HTTP_STATUS_CODES::HTTP_ACCEPTED);
     }
 
     public function delete($id)
     {
         $this->model->destroy($id);
 
-        return response()->json(null, 204);
+        return response()->json(null, HTTP_STATUS_CODES::HTTP_NO_CONTENT);
     }
 
     public function show($id)
